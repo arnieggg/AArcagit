@@ -1,8 +1,10 @@
 package edu.elp.AArca.controller;
 
+import edu.elp.AArca.entity.Asignatura;
 import edu.elp.AArca.entity.Estudiante;
 import edu.elp.AArca.entity.Persona;
 import edu.elp.AArca.entity.Profesor;
+import edu.elp.AArca.service.IAsignaturaService;
 import edu.elp.AArca.service.IEstudianteService;
 import edu.elp.AArca.service.IPersonaService;
 import edu.elp.AArca.service.IProfesorService;
@@ -17,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("index")
-public class Saludo {
+public class Controlador {
     @Autowired
     private IPersonaService personaService;
 
@@ -41,16 +43,21 @@ public class Saludo {
             return this.estudianteService.listaEstudiantes();
         }
         @GetMapping("/buscarEstudiante")
-        public Estudiante buscarEstudiante(@RequestParam("codigo") String codigo) {
-            return this.estudianteService.obtenerEstudianteByCodigo(codigo);
+        public Estudiante buscarEstudiante(@RequestParam("nombre") String nombre) {
+            return this.estudianteService.obtenerEstudianteByNombre(nombre);
         }
+
     @Autowired
         private IProfesorService profesorService;
          @GetMapping("/listaProfesor")
          public List<Profesor>listaProfesor() {
              return this.profesorService.listaProfesor();
-
-
+         }
+         @Autowired
+    private IAsignaturaService asignaturaService;
+         @GetMapping("/listaCurso")
+    public List<Asignatura>listaCurso(){
+             return this.asignaturaService.curso();
          }
 }
 

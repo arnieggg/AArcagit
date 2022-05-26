@@ -26,7 +26,8 @@ public class EstudianteServicelmpl  implements IEstudianteService {
     }
 
     @Override
-    public Estudiante obtenerEstudianteByCodigo(String codigo) {
-        return this.estudianteDao.buscarEstudiante(codigo);
+    public Estudiante obtenerEstudianteByNombre(String nombre) {
+        return this.estudianteDao.buscarEstudiante(nombre);
     }
+
 }

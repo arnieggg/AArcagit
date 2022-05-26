@@ -14,4 +14,7 @@ public class Estudiante  extends Persona{
 
     @Column(name="serie",length = 8)
     private  String serie;
+
+    @Column(name="nombre",length = 15,nullable = false)
+    private  String nombre;
 }
